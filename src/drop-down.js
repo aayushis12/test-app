@@ -1,38 +1,32 @@
 import React from 'react';
 
-class DropDown extends React.Component{
 
-  displayListItems = () => (
-    <ul className="dd-list">
-      {
-        this.props.data.values.map((value) => (
-          <li className="dd-list-item" onClick={()=>this.props.changeCity(value)}>{value}</li>
-      ))
-      }
-    </ul>
-  )
+const displayListItems = (data, changeCity) => (
+  <ul className="dd-list">
+    {
+      data.values.map((value) => (
+        <li className="dd-list-item" onClick={()=>changeCity(value)}>{value}</li>
+    ))
+    }
+  </ul>
+)
 
-  render(){
-    const { toggleList, listOpen, placeholder } = this.props;
-    console.log(this.props.listOpen);
-    return (
-      <div className="dd-wrapper">
-        <div className="dd-field" onClick={toggleList}>
-          <div>{placeholder}</div>
-        {
-          listOpen? 
-          (
-            <i className="fa fa-angle-up" />
-          ) : 
-          (
-            <i className="fa fa-angle-down" />
-          )
-        }
-        </div>
-        {listOpen && this.displayListItems()}
-      </div>
-    )
-  }
-}
+const DropDown = ({ data, toggleList, listOpen, placeholder, changeCity }) => (
+  <div className="dd-wrapper">
+    <div className="dd-field" onClick={toggleList}>
+      <div>{placeholder}</div>
+    {
+      listOpen? 
+      (
+        <i className="fa fa-angle-up" />
+      ) : 
+      (
+        <i className="fa fa-angle-down" />
+      )
+    }
+    </div>
+    {listOpen && displayListItems(data, changeCity)}
+  </div>
+)
 
 export default DropDown;

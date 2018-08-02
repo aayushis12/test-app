@@ -33,9 +33,15 @@ class FlexiComponent extends React.Component{
           <div>
             {
               data.type==="TextField"? 
-            (<input value={this.state.details.name} onChange={(e)=>this.setState({details: {...this.state.details, name: e.target.value}})}/>) : 
-            (<DropDown data={data} 
-         toggleList={this.toggleList} placeholder={this.state.details.city} listOpen={this.state.listOpen} changeCity={this.changeCity}/>)
+            <input 
+              value={this.state.details.name} 
+              onChange={(e)=>this.setState({details: {...this.state.details, name: e.target.value}})}/> : 
+            <DropDown 
+              data={data} 
+              toggleList={this.toggleList} 
+              placeholder={this.state.details.city} 
+              listOpen={this.state.listOpen} 
+              changeCity={this.changeCity}/>
             }
           </div>
         </div>

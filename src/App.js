@@ -24,9 +24,13 @@ const flexiConfig = {
 };
 class App extends Component {
   onSubmit = value => {
-    console.log(value)
-    alert(JSON.stringify(value));
+    if(!value.name || value.city === 'Select One'){
+      alert('Please fill all the details')
+    }else{
+      alert(JSON.stringify(value))
+    }
   }
+
   render() {
     return (
       <div>
